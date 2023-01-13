@@ -9,10 +9,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const goalRouter = require("./routes/goal");
-const userRouter = require("./routes/user");
-app.use("/api/goals", goalRouter);
-app.use("/api/users", userRouter);
+app.use("/api/goals", require("./routes/goalRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
 
 const { errorHandler } = require("./middlewares/errorMiddleware");
 app.use(errorHandler);
