@@ -10,7 +10,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const goalRouter = require("./routes/goal");
+const userRouter = require("./routes/user");
 app.use("/api/goals", goalRouter);
+app.use("/api/users", userRouter);
 
 const { errorHandler } = require("./middlewares/errorMiddleware");
 app.use(errorHandler);
