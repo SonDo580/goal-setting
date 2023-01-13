@@ -3,6 +3,9 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 const goalRouter = require("./routes/goal");
 app.use("/api/goals", goalRouter);
 
