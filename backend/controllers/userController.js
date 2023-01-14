@@ -60,6 +60,13 @@ const getMe = asyncHandler(async (req, res) => {
   res.json({ message: "User data" });
 });
 
+// Generate JWT
+const generateToken = (userID) => {
+  return jwt.sign({ userID }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
+
 module.exports = {
   register,
   login,
