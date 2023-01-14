@@ -13,7 +13,9 @@ function Register() {
 
   const handleChange = () => {};
 
-  const handleSubmit = () => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <>
