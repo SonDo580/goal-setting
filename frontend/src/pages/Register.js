@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
+import { register } from "../features/auth/authSlice";
 
 function Register() {
   const dispatch = useDispatch();
@@ -34,6 +35,8 @@ function Register() {
     if (password !== password2) {
       toast.error("Passwords do not match");
     } else {
+      const userData = { name, email, password };
+      dispatch(register(userData));
     }
   };
 
