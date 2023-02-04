@@ -18,12 +18,23 @@ export const register = createAsyncThunk(
       return await authService.register(user);
     } catch (err) {
       console.log(err);
-      const message = "Error";
+      const message = "Error register";
 
       return thunkAPI.rejectWithValue(message);
     }
   }
 );
+
+export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
+  try {
+    return await authService.login(user);
+  } catch (err) {
+    console.log(err);
+    const message = "Error login";
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
 
 export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout();
