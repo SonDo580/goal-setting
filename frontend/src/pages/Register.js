@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -21,6 +21,12 @@ function Register() {
   });
 
   const { name, email, password, password2 } = formData;
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+  }, [user, isLoading, isError, isSuccess, message, navigate, dispatch]);
 
   const handleChange = (event) => {
     setFormData((prevState) => ({
