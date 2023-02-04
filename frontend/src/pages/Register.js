@@ -26,6 +26,10 @@ function Register() {
     if (isError) {
       toast.error(message);
     }
+
+    if (isSuccess || user) {
+      navigate("/");
+    }
   }, [user, isLoading, isError, isSuccess, message, navigate, dispatch]);
 
   const handleChange = (event) => {
