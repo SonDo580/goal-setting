@@ -46,6 +46,25 @@ const goalSlice = createSlice({
         state.isError = true;
 
         state.message = action.payload;
+      })
+      .addCase(deleteGoal.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteGoal.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+
+        const indexDelete = state.goals.findIndex(
+          (goal) => goal._id === action.payload.id
+        );
+
+        state.goals.splice(indexDelete, 1);
+      })
+      .addCase(deleteGoal.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+
+        state.message = action.payload;
       });
   },
 });
@@ -85,7 +104,7 @@ export const getGoals = createAsyncThunk(
 );
 
 export const deleteGoal = createAsyncThunk(
-  "goals/getGoals",
+  "goals/deleteGoal",
   async (goalID, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
