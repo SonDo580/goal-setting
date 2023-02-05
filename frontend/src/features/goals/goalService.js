@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = "/api/goals";
 
-const create = async (goalData, token) => {
+const createGoal = async (goalData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -13,7 +13,7 @@ const create = async (goalData, token) => {
 };
 
 const goalService = {
-  create,
+  createGoal,
 };
 
 export default goalService;
