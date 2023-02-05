@@ -13,12 +13,12 @@ const goalSlice = createSlice({
   name: "goals",
   initialState,
   reducers: {
-    reset: (state) => ({
-      isError: false,
-      isSuccess: false,
-      isLoading: false,
-      message: "",
-    }),
+    reset: (state) => {
+      state.isError = false;
+      state.isSuccess = false;
+      state.isLoading = false;
+      state.message = "";
+    },
   },
   extraReducers: (builder) => {
     builder
