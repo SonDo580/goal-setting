@@ -15,12 +15,13 @@ function GoalForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (goal.trim().length === 0) {
+    const goalData = goal.trim();
+    if (goalData.length === 0) {
       toast.error("Goal must not be empty!");
       return;
     }
 
-    dispatch(createGoal(goal));
+    dispatch(createGoal(goalData));
     dispatch(reset());
     setGoal("");
   };
