@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { createGoal, reset } from "../features/goals/goalSlice";
+import Spinner from "./Spinner";
 
 function GoalForm() {
   const dispatch = useDispatch();
@@ -34,6 +35,10 @@ function GoalForm() {
     dispatch(createGoal(goalData));
     setGoal("");
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <section className="form">
