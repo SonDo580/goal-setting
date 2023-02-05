@@ -15,8 +15,6 @@ function GoalForm() {
     if (isError) {
       toast.error(message);
     }
-
-    dispatch(reset());
   }, [isLoading, isError, message, dispatch]);
 
   const handleChange = (event) => {
