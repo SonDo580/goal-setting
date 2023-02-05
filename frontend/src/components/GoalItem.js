@@ -3,8 +3,11 @@ function GoalItem(props) {
 
   return (
     <div className="goal">
-      <div>{new Date(goal.createdAt).toLocaleString("en-US")}</div>
-      <h2>{goal.text}</h2>
+      <div className="goal-date">
+        {new Date(goal.createdAt).toLocaleString("en-US")}
+      </div>
+
+      <h3 className="goal-text">{goal.text}</h3>
     </div>
   );
 }

@@ -99,6 +99,15 @@ h3 {
   position: relative;
 }
 
+.goal .goal-date {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.goal .goal-text {
+  font-size: 1.5rem;
+}
+
 .goal .close {
   position: absolute;
   top: 10px;
