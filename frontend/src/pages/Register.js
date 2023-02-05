@@ -33,7 +33,7 @@ function Register() {
     }
 
     dispatch(reset());
-  }, [user, isLoading, isError, isSuccess, message, navigate, dispatch]);
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const handleChange = (event) => {
     setFormData((prevState) => ({
