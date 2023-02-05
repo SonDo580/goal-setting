@@ -22,9 +22,11 @@ export const createGoal = createAsyncThunk(
   async (goalData, thunkAPI) => {
     try {
       return await goalService.create(goalData);
-    } catch (err) {
-      console.log(err);
-      const message = "Error create goal";
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.message) ||
+        error.message ||
+        error.toString();
 
       return thunkAPI.rejectWithValue(message);
     }
