@@ -1,3 +1,5 @@
+import { FaTrash } from "react-icons/fa";
+
 function GoalItem(props) {
   const { goal } = props;
 
@@ -8,6 +10,10 @@ function GoalItem(props) {
       </div>
 
       <h3 className="goal-text">{goal.text}</h3>
+
+      <button className="close">
+        <FaTrash />
+      </button>
     </div>
   );
 }
