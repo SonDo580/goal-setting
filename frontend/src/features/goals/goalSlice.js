@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import goalService from "./goalService";
 
 const initialState = {
   goals: [],
@@ -15,6 +16,20 @@ const goalSlice = createSlice({
     reset: (state) => initialState,
   },
 });
+
+export const createGoal = createAsyncThunk(
+  "goals/create",
+  async (goal, thunkAPI) => {
+    try {
+      return await goalService.create(goal);
+    } catch (err) {
+      console.log(err);
+      const message = "Error create goal";
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const { reset } = goalSlice.actions;
 export default goalSlice.reducer;
