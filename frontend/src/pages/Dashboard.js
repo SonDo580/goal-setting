@@ -1,24 +1,35 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import GoalForm from "../components/GoalForm";
-import { getGoals } from "../features/goals/goalSlice";
+import Spinner from "../components/Spinner";
+import { getGoals, reset } from "../features/goals/goalSlice";
 
 function Dashboard() {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.auth);
-  const { goals } = useSelector((state) => state.goals);
+  const { goals, isLoading, isError, message } = useSelector(
+    (state) => state.goals
+  );
 
   useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
     if (!user) {
       navigate("/login");
-    } else {
-      dispatch(getGoals());
     }
-  }, [dispatch, navigate, user, goals]);
+
+    dispatch(getGoals());
+  }, [dispatch, navigate, user, goals, isLoading, isError, message]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
