@@ -6,22 +6,22 @@ import { createGoal } from "../features/goals/goalSlice";
 function GoalForm() {
   const dispatch = useDispatch();
 
-  const [text, setText] = useState("");
+  const [goal, setGoal] = useState("");
 
   const handleChange = (event) => {
-    setText(event.target.value);
+    setGoal(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (text.trim().length === 0) {
+    if (goal.trim().length === 0) {
       toast.error("Goal must not be empty!");
       return;
     }
 
-    dispatch(createGoal(text));
-    setText("");
+    dispatch(createGoal(goal));
+    setGoal("");
   };
 
   return (
@@ -29,7 +29,7 @@ function GoalForm() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Goal</label>
-          <input type="text" name="text" value={text} onChange={handleChange} />
+          <input type="text" name="text" value={goal} onChange={handleChange} />
         </div>
         <div className="form-group">
           <button className="btn btn-block">Add Goal</button>

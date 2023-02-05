@@ -19,9 +19,9 @@ const goalSlice = createSlice({
 
 export const createGoal = createAsyncThunk(
   "goals/create",
-  async (goal, thunkAPI) => {
+  async (goalData, thunkAPI) => {
     try {
-      return await goalService.create(goal);
+      return await goalService.create(goalData);
     } catch (err) {
       console.log(err);
       const message = "Error create goal";
