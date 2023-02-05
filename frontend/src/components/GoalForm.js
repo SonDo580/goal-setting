@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { createGoal, reset } from "../features/goals/goalSlice";
-import Spinner from "./Spinner";
+import { createGoal } from "../features/goals/goalSlice";
 
 function GoalForm() {
   const dispatch = useDispatch();
 
-  const { isLoading, isError, message } = useSelector((state) => state.goals);
-
   const [goal, setGoal] = useState("");
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-  }, [isLoading, isError, message, dispatch]);
 
   const handleChange = (event) => {
     setGoal(event.target.value);
@@ -33,10 +24,6 @@ function GoalForm() {
     dispatch(createGoal(goalData));
     setGoal("");
   };
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   return (
     <section className="form">
