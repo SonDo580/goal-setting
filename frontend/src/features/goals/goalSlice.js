@@ -36,7 +36,7 @@ const goalSlice = createSlice({
 });
 
 export const createGoal = createAsyncThunk(
-  "goals/create",
+  "goals/createGoal",
   async (goalData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
@@ -52,7 +52,7 @@ export const createGoal = createAsyncThunk(
   }
 );
 
-export const fetchGoals = createAsyncThunk("goals/fetch", async (thunkAPI) => {
+export const getGoals = createAsyncThunk("goals/getGoals", async (thunkAPI) => {
   try {
     const token = thunkAPI.getState().auth.user.token;
     return await goalService.getGoals(token);
