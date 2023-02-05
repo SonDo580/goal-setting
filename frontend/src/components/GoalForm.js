@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { createGoal } from "../features/goals/goalSlice";
+import { createGoal, reset } from "../features/goals/goalSlice";
 
 function GoalForm() {
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ function GoalForm() {
     }
 
     dispatch(createGoal(goal));
+    dispatch(reset());
     setGoal("");
   };
 
