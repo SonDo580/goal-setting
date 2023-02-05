@@ -25,6 +25,10 @@ function Dashboard() {
     }
 
     dispatch(getGoals());
+
+    return () => {
+      dispatch(reset());
+    };
   }, [dispatch, navigate, user, goals, isLoading, isError, message]);
 
   if (isLoading) {
