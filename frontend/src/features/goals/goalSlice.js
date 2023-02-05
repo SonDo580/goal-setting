@@ -52,19 +52,22 @@ export const createGoal = createAsyncThunk(
   }
 );
 
-export const getGoals = createAsyncThunk("goals/getGoals", async (thunkAPI) => {
-  try {
-    const token = thunkAPI.getState().auth.user.token;
-    return await goalService.getGoals(token);
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.message) ||
-      error.message ||
-      error.toString();
+export const getGoals = createAsyncThunk(
+  "goals/getGoals",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await goalService.getGoals(token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.message) ||
+        error.message ||
+        error.toString();
 
-    return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 export const { reset } = goalSlice.actions;
 export default goalSlice.reducer;
