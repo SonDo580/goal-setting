@@ -19,7 +19,7 @@ function GoalItem(props) {
 
       <h3 className="goal-text">{goal.text}</h3>
 
-      <button className="close" onClick={() => handleDeleteGoal(goal.id)}>
+      <button className="close" onClick={() => handleDeleteGoal(goal._id)}>
         <FaTrash />
       </button>
     </div>
