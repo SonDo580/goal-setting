@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { createGoal } from "../features/goals/goalSlice";
 
 function GoalForm() {
@@ -13,6 +14,12 @@ function GoalForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (text.trim().length === 0) {
+      toast.error("Goal must not be empty!");
+      return;
+    }
+
     dispatch(createGoal(text));
     setText("");
   };
