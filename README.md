@@ -2,6 +2,10 @@
 
 A MERN app for setting goal (from Traversy Media youtube channel)
 
+# Live Preview
+
+(haven't deploy)
+
 # Features
 
 - Authenticate and authorize user
@@ -22,4 +26,5 @@ A MERN app for setting goal (from Traversy Media youtube channel)
 
 # Note
 
-- Haven't deploy
+- Return JSON from backend
+- Call APIs from frontend to get data
