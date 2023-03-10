@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SonDo580/mern-tutorial.git"
+    "url": "git+https://github.com/SonDo580/goal-setting.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SonDo580/mern-tutorial/issues"
+    "url": "https://github.com/SonDo580/goal-setting/issues"
   },
-  "homepage": "https://github.com/SonDo580/mern-tutorial#readme",
+  "homepage": "https://github.com/SonDo580/goal-setting#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
